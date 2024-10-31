@@ -1,11 +1,12 @@
 import * as T from './Styles'
+import { ChipModel } from '../../../../models';
 
 interface Props {
-    name: string;
+    chip: ChipModel;
 }
 
-export const SingleChip = ({ name }: Props)=> {
+export const SingleChip = ({ chip }: Props)=> {
     return (
-        <T.ChipButton>{name}</T.ChipButton>
+        <T.ChipButton>{chip.chipName}</T.ChipButton>
     );
 }

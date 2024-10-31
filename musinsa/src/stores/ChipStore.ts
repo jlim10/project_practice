@@ -1,19 +1,21 @@
 import { makeAutoObservable } from "mobx";
-// import { ChipType } from "../@types/chip";
+import { ChipModel } from "../models";
 
 export class ChipStore {
 
-    selectedChips: string[] = [];
+    selectedChips: ChipModel[];
 
     constructor () {
         makeAutoObservable(this);
+
+        this.selectedChips = [];
     }
 
-    addChip = (chip: string) => {
+    addChip = (chip: ChipModel) => {
         this.selectedChips.push(chip);
     }
 
-    removeChip = (chip: string) => {
+    removeChip = (chip: ChipModel) => {
         this.selectedChips.filter((v)=> v !== chip);
     }
 }

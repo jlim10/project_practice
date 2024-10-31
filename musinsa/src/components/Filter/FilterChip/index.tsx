@@ -9,7 +9,7 @@ export const ChipList = observer(() => {
 
     return (
         <>
-        {selectedChips.map((v,i) => <SingleChip key={i} name={v}/>) }
+        {selectedChips.map((v,i) => <SingleChip key={i} chip={v}/>) }
         </>
     )
 })

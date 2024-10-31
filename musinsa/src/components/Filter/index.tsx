@@ -3,13 +3,13 @@ import React, { useState,useCallback, useEffect } from "react";
 import { SearchText } from "./Styled";
 import { useStore } from "../../stores";
 import { ChipList } from "./FilterChip";
+import { ChipModel } from "../../models";
+import { FilterChips } from "../constant";
 
 
 // interface Props {
 //     onChangeSearch: () => void;
 // }
-
-const FilterOptions = ['세일상품', '단독상품', '품절포함'];
 
 export const SearchFilter = () => {
 
@@ -20,7 +20,7 @@ export const SearchFilter = () => {
         setOnSearchField(prev => !prev);
     }, []);
 
-    const onClickFilter = useCallback((chip: string) => {
+    const onClickFilter = useCallback((chip: ChipModel) => {
         chipStore.addChip(chip);
     }, []);
 
@@ -30,7 +30,7 @@ export const SearchFilter = () => {
 
     return (
         <>
-            <Button name='검색' onClick={onClickSearch}/> {FilterOptions.map((v,i) => <Button key={i} name={v} onClick={() => onClickFilter(v)}/>)}
+            <Button name='검색' onClick={onClickSearch}/> {FilterChips.map((v,i) => <Button key={i} name={v.chipName} onClick={() => onClickFilter(v)}/>)}
             <ChipList />
             {onSearchField && <SearchText onChange={onChangeSearch}/>}
         </>
